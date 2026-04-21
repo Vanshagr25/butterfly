@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Seerat ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Marcellus&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --deep-space: #0a0a1f;
+    --midnight: #151538;
+    --cosmic-purple: #2d1b4e;
+    --stardust: #e8d5b7;
+    --moonlight: #f5e6d3;
+    --gold: #d4af7a;
+    --rose-gold: #e8a5a5;
+    --soft-pink: #f7c5c5;
+    --nebula: #8b5a9f;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    background: var(--deep-space);
+    color: var(--moonlight);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+  }
+
+  /* Cosmic background */
+  .cosmos {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(139, 90, 159, 0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(232, 165, 165, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(45, 27, 78, 0.6) 0%, transparent 70%),
+      linear-gradient(180deg, #0a0a1f 0%, #151538 50%, #2d1b4e 100%);
+    z-index: -3;
+  }
+
+  /* Stars */
+  .stars, .stars2, .stars3 {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle linear infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+
+  /* Shooting star */
+  .shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px white;
+    z-index: -1;
+    animation: shoot 6s linear infinite;
+    opacity: 0;
+  }
+
+  .shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, white, transparent);
+    transform: translateX(-100px);
+  }
+
+  @keyframes shoot {
+    0% { transform: translate(-10vw, 20vh) rotate(20deg); opacity: 0; }
+    10% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: translate(110vw, 60vh) rotate(20deg); opacity: 0; }
+  }
+
+  .shooting-star:nth-child(2) {
+    animation-delay: 3s;
+    animation-duration: 8s;
+  }
+
+  /* Main content */
+  main {
+    position: relative;
+    min-height: 100vh;
+    padding: 60px 24px;
+  }
+
+  /* Hero section */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .pre-title {
+    font-family: 'Marcellus', serif;
+    letter-spacing: 0.6em;
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1.2s 0.3s forwards;
+  }
+
+  .pre-title::before, .pre-title::after {
+    content: '✦';
+    margin: 0 1.5rem;
+    color: var(--rose-gold);
+  }
+
+  .name {
+    font-family: 'Italiana', serif;
+    font-size: clamp(4rem, 18vw, 14rem);
+    font-weight: 400;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #f5e6d3 0%, #d4af7a 40%, #e8a5a5 70%, #f5e6d3 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s ease-in-out infinite, fadeInScale 1.5s 0.6s forwards;
+    opacity: 0;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 80px rgba(212, 175, 122, 0.3);
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .birthday-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--stardust);
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeInUp 1.2s 1.2s forwards;
+    letter-spacing: 0.1em;
+  }
+
+  .divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 3rem auto;
+    opacity: 0;
+    animation: expandDivider 1.5s 1.5s forwards;
+  }
+
+  @keyframes expandDivider {
+    from { opacity: 0; width: 0; }
+    to { opacity: 1; width: 120px; }
+  }
+
+  /* Moon */
+  .moon {
+    position: absolute;
+    top: 15%;
+    right: 8%;
+    width: clamp(60px, 10vw, 120px);
+    height: clamp(60px, 10vw, 120px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff9e6, #e8d5b7 60%, #c9a96e);
+    box-shadow:
+      0 0 60px rgba(245, 230, 211, 0.4),
+      0 0 120px rgba(212, 175, 122, 0.2),
+      inset -15px -15px 30px rgba(139, 90, 159, 0.3);
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.9;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  /* Message section */
+  .message-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1.5s 2s forwards;
+  }
+
+  .message-ornament {
+    font-family: 'Italiana', serif;
+    color: var(--rose-gold);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1rem;
+  }
+
+  .message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--moonlight);
+    font-style: italic;
+  }
+
+  .message p {
+    margin-bottom: 1.5rem;
+  }
+
+  .message .highlight {
+    color: var(--gold);
+    font-style: normal;
+    font-family: 'Marcellus', serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* Wishes cards */
+  .wishes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+
+  .wish-card {
+    background: linear-gradient(135deg, rgba(45, 27, 78, 0.4), rgba(21, 21, 56, 0.2));
+    border: 1px solid rgba(212, 175, 122, 0.3);
+    border-radius: 2px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+  }
+
+  .wish-card::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid rgba(212, 175, 122, 0.2);
+    pointer-events: none;
+    transition: all 0.6s;
+  }
+
+  .wish-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--rose-gold);
+    box-shadow: 0 20px 60px rgba(139, 90, 159, 0.3);
+  }
+
+  .wish-card:hover::before {
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border-color: var(--gold);
+  }
+
+  .wish-card:nth-child(1) { animation-delay: 2.5s; }
+  .wish-card:nth-child(2) { animation-delay: 2.8s; }
+  .wish-card:nth-child(3) { animation-delay: 3.1s; }
+
+  .wish-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .wish-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    color: var(--stardust);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .wish-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245, 230, 211, 0.85);
+    font-style: italic;
+  }
+
+  /* Signature section */
+  .signature {
+    text-align: center;
+    padding: 4rem 2rem 6rem;
+    opacity: 0;
+    animation: fadeInUp 1.5s 3.5s forwards;
+  }
+
+  .signature-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--stardust);
+    margin-bottom: 1rem;
+  }
+
+  .signature-name {
+    font-family: 'Italiana', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--gold);
+    letter-spacing: 0.15em;
+  }
+
+  .signature-ornament {
+    color: var(--rose-gold);
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    letter-spacing: 1rem;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating hearts on click */
+  .heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    animation: floatUp 2s ease-out forwards;
+    z-index: 100;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--stardust);
+    font-family: 'Marcellus', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 1s 2.5s forwards, bob 2s ease-in-out infinite 3.5s;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .scroll-hint::after {
+    content: '↓';
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  /* Music button */
+  .music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(45, 27, 78, 0.6);
+    border: 1px solid var(--gold);
+    color: var(--stardust);
+    padding: 12px 20px;
+    font-family: 'Marcellus', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+    z-index: 50;
+    transition: all 0.3s;
+  }
+
+  .music-btn:hover {
+    background: rgba(212, 175, 122, 0.2);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    .moon { top: 10%; right: 5%; }
+    .pre-title::before, .pre-title::after { margin: 0 0.8rem; }
+    .message-ornament { letter-spacing: 0.5rem; font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cosmos"></div>
+<div class="stars" id="stars"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+
+<main>
+  <section class="hero">
+    <div class="moon"></div>
+    <div class="pre-title">A Celestial Celebration</div>
+    <h1 class="name">Seerat</h1>
+    <div class="birthday-text">happy birthday, beautiful soul</div>
+    <div class="divider"></div>
+    <div class="scroll-hint">scroll for your wishes</div>
+  </section>
+
+  <section class="message-section">
+    <div class="message-ornament">✧ ✦ ✧</div>
+    <div class="message">
+      <p>Somewhere between the pixels and the stars, the universe wrote us into the same story.</p>
+      <p>We've never shared the same sky in person, yet somehow you've become <span class="highlight">one of my favorite people</span> in this whole wide world.</p>
+      <p>Today, the cosmos pauses to celebrate <em>you</em> — the laughter that crosses oceans, the kindness that travels through screens, the soul that shines brighter than any star in this galaxy.</p>
+    </div>
+  </section>
+
+  <section class="wishes">
+    <div class="wish-card">
+      <span class="wish-icon">✦</span>
+      <div class="wish-title">For Your Dreams</div>
+      <div class="wish-text">May every wish you whisper to the stars find its way back to you, wrapped in moonlight and golden possibility.</div>
+    </div>
+    <div class="wish-card">
+      <span class="wish-icon">❦</span>
+      <div class="wish-title">For Your Heart</div>
+      <div class="wish-text">May it always be as full as tonight's sky — bright, boundless, and impossible to dim, no matter what comes your way.</div>
+    </div>
+    <div class="wish-card">
+      <span class="wish-icon">✧</span>
+      <div class="wish-title">For Your Year</div>
+      <div class="wish-text">May it unfold like a love letter from the universe — full of soft mornings, loud laughs, and stories worth telling.</div>
+    </div>
+  </section>
+
+  <section class="signature">
+    <div class="signature-text">with all the warmth a screen can carry,</div>
+    <div class="signature-name">your friend, always</div>
+    <div class="signature-ornament">♡</div>
+  </section>
+</main>
+
+<button class="music-btn" onclick="playTune()">♪ Play Melody</button>
+
+<script>
+  // Generate twinkling stars
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 150; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2 + 0.5;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    starsContainer.appendChild(star);
+  }
+
+  // Hearts on click
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('music-btn')) return;
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    const hearts = ['♡', '✦', '✧', '❀', '♥'];
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = e.clientX + 'px';
+    heart.style.top = e.clientY + 'px';
+    heart.style.color = ['#d4af7a', '#e8a5a5', '#f5e6d3'][Math.floor(Math.random() * 3)];
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2000);
+  });
+
+  // Happy Birthday melody using Web Audio API
+  let isPlaying = false;
+  function playTune() {
+    if (isPlaying) return;
+    isPlaying = true;
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // Happy Birthday notes (C C D C F E / C C D C G F / C C C' A F E D / Bb Bb A F G F)
+    const notes = [
+      [261.63, 0.4], [261.63, 0.2], [293.66, 0.6], [261.63, 0.6], [349.23, 0.6], [329.63, 1.2],
+      [261.63, 0.4], [261.63, 0.2], [293.66, 0.6], [261.63, 0.6], [392.00, 0.6], [349.23, 1.2],
+      [261.63, 0.4], [261.63, 0.2], [523.25, 0.6], [440.00, 0.6], [349.23, 0.6], [329.63, 0.6], [293.66, 1.2],
+      [466.16, 0.4], [466.16, 0.2], [440.00, 0.6], [349.23, 0.6], [392.00, 0.6], [349.23, 1.2]
+    ];
+
+    let time = ctx.currentTime;
+    notes.forEach(([freq, dur]) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, time);
+      gain.gain.linearRampToValueAtTime(0.15, time + 0.05);
+      gain.gain.linearRampToValueAtTime(0, time + dur);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(time);
+      osc.stop(time + dur);
+      time += dur;
+    });
+
+    setTimeout(() => { isPlaying = false; }, time * 1000);
+  }
+</script>
+
+</body>
+</html>
